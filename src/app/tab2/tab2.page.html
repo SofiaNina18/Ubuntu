@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Nuevo evento
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form (ngSubmit)="enviarFormulario()">
+    <ion-item>
+      <ion-input label="Speaker" labelPlacement="fixed" type="text" name="speaker" [(ngModel)]="evento.speaker"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Title" labelPlacement="fixed" type="text" name="title" [(ngModel)]="evento.title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-select label="Place" labelPlacement="fixed"
+           name="place" placeholder="Seleccione uno" [(ngModel)] ="evento.place">
+
+           <ion-select-option value="Bilbao">Bilbao</ion-select-option>
+           <ion-select-option value="Gazteiz">Gazteiz</ion-select-option>
+           <ion-select-option value="Donostia">Donostia</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-datetime name="date" presentation="date" [(ngModel)]="evento.date"></ion-datetime>
+    </ion-item>
+    <ion-button expand="full" color="primary" type="submit">Añadir</ion-button>
+  </form>
+</ion-content>

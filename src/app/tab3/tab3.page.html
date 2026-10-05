@@ -1,0 +1,25 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Eliminar
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list-header>
+    <ion-label>Seleccione un elemento a eliminar</ion-label>
+  </ion-list-header>
+
+  @for(item of eventos; track item.id; let i = $index)
+  {
+    <ion-item>
+      <ion-label>{{ item.speaker }}</ion-label>
+      <ion-label>{{ item.title }}</ion-label>
+      <ion-button color = "danger" (click)="delete(i)">
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+  }
+
+</ion-content>
