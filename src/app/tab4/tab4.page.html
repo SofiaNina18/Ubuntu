@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Editar Evento
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  @if (selectedEventIndex === null) {
+    <ion-list-header>
+      <ion-label>Seleccione un elemento a editar</ion-label>
+    </ion-list-header>
+
+    @for(item of eventos; track item.id; let i = $index)
+    {
+      <ion-item>
+        <ion-label>{{ item.speaker }}</ion-label>
+        <ion-label>{{ item.title }}</ion-label>
+        <ion-button color="primary" (click)="selectForEdit(i)">
+          <ion-icon name="create"></ion-icon>
+        </ion-button>
+      </ion-item>
+    }
+  } @else {
+    <ion-list-header>
+      <ion-label>Modificar Evento</ion-label>
+    </ion-list-header>
+
+    <form (ngSubmit)="actualizarFormulario()">
+      <ion-item>
+        <ion-input label="Speaker" labelPlacement="fixed" type="text" name="speaker" [(ngModel)]="eventoEdit.speaker"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input label="Title" labelPlacement="fixed" type="text" name="title" [(ngModel)]="eventoEdit.title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-select label="Place" labelPlacement="fixed" name="place" placeholder="Seleccione uno" [(ngModel)]="eventoEdit.place">
+           <ion-select-option value="Bilbao">Bilbao</ion-select-option>
+           <ion-select-option value="Gazteiz">Gazteiz</ion-select-option>
+           <ion-select-option value="Donostia">Donostia</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-datetime name="date" presentation="date" [(ngModel)]="eventoEdit.date"></ion-datetime>
+      </ion-item>
+      <ion-button expand="full" color="success" type="submit">Guardar Cambios</ion-button>
+      <ion-button expand="full" color="medium" (click)="cancelar()">Cancelar</ion-button>
+    </form>
+  }
+</ion-content>

@@ -49,4 +49,13 @@ export class Eventos {
     {
         this.events.splice(id, 1);
     }
+    getEvent(index: any)
+    {
+        return this.events[index];
+    }
+
+    updateEvent(index: any, evento: any)
+    {
+        this.events[index] = { id: index, speaker: evento.speaker, title: evento.title, place: evento.place, date: evento.date };
+    }
 }
